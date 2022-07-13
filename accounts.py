@@ -14,34 +14,31 @@ class Liame:
         self.registeredUsers = []
         self.loggedUser = ""
         
-    def singin(self):
+    def signin(self):
         name = str(input("Seu nome: "))
         email = str(input("Seu e-mail: "))
         password = str(input("Sua senha: "))
 
-        for element in self.registeredUsers:
+        for user in self.registeredUsers:
             # percorre todos os e-mails cadastrados e verifica se é igual ao email inserido.
-            if element.email == email:
+            if user.email == email + "@liame.com":
                 print("e-mail já cadastrado, chame a função novamente e insira um e-mail que ainda não foi cadastrado.")
 
         user = EmailAccounts(name, email, password)
         self.registeredUsers.append(user)
 
-        print("User cadastrado!")
-        print("lista de users: ", self.registeredUsers)
+        print("User cadastrado!", user.email)
 
     def login(self):
-
         email = str(input("Seu e-mail: "))
         password = str(input("Sua senha: "))
 
-        for element in self.registeredUsers:
+        for user in self.registeredUsers:
             #verificação se o e-mail inserido é igual a de um usuário cadastrado
-            if element.email == email:
-                print("esse é o elemento verificado: ", element.email)
+            if user.email == email:
                 #Verificando se a senha é igual a do usuário cadastrado
-                if element.password == password:
-                    self.loggedUser = element
+                if user.password == password:
+                    self.loggedUser = user
                     print("usuário logado!")
                 else:
                     print("senha invalida")
@@ -60,11 +57,11 @@ class Liame:
             email = {'from': self.loggedUser.email, 'subject': subject, 'message': message}
 
             #percorre todos os usuários registrados
-            for element in self.registeredUsers:
+            for user in self.registeredUsers:
                 #verifica se o e-mail existe
-                if element.email == mailTo:
+                if user.email == mailTo:
                     #se existe adiciona o e-mail na caixa de e-mail do usuário
-                    element.boxMessage.append(email)
+                    user.boxMessage.append(email)
                     print("e-mail enviado!")
 
     
@@ -73,16 +70,16 @@ class Liame:
             print("Usuário não logado, por favor faça login para enviar uma mensagem")
 
         else:
-            for elements in self.loggedUser.boxMessage:
-                print(elements)
+            for boxes in self.loggedUser.boxMessage:
+                print(boxes)
 
     def openMessage(self):
         if self.loggedUser == "":
             print("Usuário não logado, por favor faça login para abrir uma mensagem")
 
         else:
-            messageIndex = int(input("Digite o indice da mensagem que deseja apagar: "))
-            print(self.loggedUser.boxMessage)
+            messageIndex = int(input("Digite o indice da mensagem que deseja visualizar: "))
+            print(self.loggedUser.boxMessage[messageIndex].message)
 
     def deleteMessage(self):
         if self.loggedUser == "":
@@ -93,9 +90,9 @@ class Liame:
             self.loggedUser.boxMessage.pop(messageIndex)
 
 liame = Liame()
-liame.singin()
-liame.singin()
-liame.singin()
+liame.signin()
+liame.signin()
+liame.signin()
 liame.login()
 liame.sendMessage()
 liame.login()
