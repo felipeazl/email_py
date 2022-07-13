@@ -1,7 +1,6 @@
 #Objeto para caixa de e-mail
 
 class EmailAccounts:
-
     def __init__(self, name, email, password):
         self.name = name
         self.email = email + "@liame.com"
@@ -9,7 +8,6 @@ class EmailAccounts:
         self.boxMessage = []
 
 class Liame:
-
     def __init__(self):
         self.registeredUsers = []
         self.loggedUser = ""
@@ -26,7 +24,6 @@ class Liame:
 
         user = EmailAccounts(name, email, password)
         self.registeredUsers.append(user)
-
         print("User cadastrado!", user.email)
 
     def login(self):
@@ -44,7 +41,6 @@ class Liame:
                     print("senha invalida")
 
     def sendMessage(self):
-
         if self.loggedUser == "":
             print("Usuário não logado, por favor faça login para enviar uma mensagem")
 
@@ -64,7 +60,6 @@ class Liame:
                     user.boxMessage.append(email)
                     print("e-mail enviado!")
 
-    
     def showBoxMail(self):
         if self.loggedUser == "":
             print("Usuário não logado, por favor faça login para enviar uma mensagem")
