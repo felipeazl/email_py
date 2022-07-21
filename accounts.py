@@ -21,12 +21,12 @@ class Liame:
         for user in self.registeredUsers:
             # percorre todos os e-mails cadastrados e verifica se é igual ao email inserido.
             if user.email == email + "@liame.com":
-                print(
-                    "e-mail já cadastrado, chame a função novamente e insira um e-mail que ainda não foi cadastrado.")
+                return "e-mail já cadastrado, chame a função novamente e insira um e-mail que ainda não foi cadastrado."
 
         user = EmailAccounts(name, email, password)
         self.registeredUsers.append(user)
         print("User cadastrado!", user.email)
+        return 'Usuário Cadastrado!'
 
     def login(self):
         email = str(input("Seu e-mail: "))
@@ -53,7 +53,8 @@ class Liame:
 
             # empacotamento do e-mail
             email = {'from': self.loggedUser.email,
-                     'subject': subject, 'message': message}
+                     'subject': subject, 
+                     'message': message}
 
             # percorre todos os usuários registrados
             for user in self.registeredUsers:
