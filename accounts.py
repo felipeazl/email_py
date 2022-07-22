@@ -15,7 +15,7 @@ class Liame:
 
     def signin(self):
         name = str(input("Seu nome: "))
-        email = str(input("Seu e-mail: "))
+        email = str(input("Seu nome de e-mail: "))
         password = str(input("Sua senha: "))
 
         for user in self.registeredUsers:
@@ -27,6 +27,7 @@ class Liame:
         user = EmailAccounts(name, email, password)
         self.registeredUsers.append(user)
         print("User cadastrado!", user.email)
+        return user
 
     def login(self):
         email = str(input("Seu e-mail: "))
@@ -88,15 +89,3 @@ class Liame:
             messageIndex = int(
                 input("Digite o indice da mensagem que deseja apagar: "))
             self.loggedUser.boxMessage.pop(messageIndex)
-
-# liame = Liame()
-# liame.signin()
-# liame.signin()
-# liame.signin()
-# liame.login()
-# liame.sendMessage()
-# liame.login()
-# liame.showBoxMail()
-# liame.openMessage()
-# liame.deleteMessage()
-# liame.showBoxMail()
