@@ -93,6 +93,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as mail_server:
                 # para o loop
                 break
 
-    # Encerra a conecção pela parte do servidor
+    # Encerra a conexão pela parte do servidor
     mail_server.close()
     print("Conexão Encerrada.")
